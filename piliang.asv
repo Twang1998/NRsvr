@@ -1,0 +1,31 @@
+clear all;
+result = [];
+result2 = [];
+addpath('lib');
+addpath('E:\taowang');
+load test_region.mat
+load train_region.mat
+addpath('C:\Users\Orange\Desktop\lownr\NRIQA\BRISQUE');
+cd E:\taowang\Texture;
+save('E:\taowang\NR\BRISQUE\test.mat', test_regio)
+ for j = 1:1500 %逐一读取图像
+            image_name = train_region_path(j,:);% 图像名
+            disp(image_name);% 显示正在处理的图像名
+            img = double(rgb2gray(imread(image_name)));
+            feat = brisque_feature(img);
+            % local mean and variance
+            result = [result;feat];
+            %result = [result; ee];
+            %图像处理过程 省略
+ end
+
+  for j = 1:300 %逐一读取图像
+            image_name = test_region_path(j,:);% 图像名
+            disp(image_name);% 显示正在处理的图像名
+            img = double(rgb2gray(imread(image_name)));
+            feat = brisque_feature(img);
+            % local mean and variance
+            result2 = [result2;feat];
+            %result = [result; ee];
+            %图像处理过程 省略
+end
