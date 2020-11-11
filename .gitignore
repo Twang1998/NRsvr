@@ -3,3 +3,5 @@ Texture/
 PROJECT/
 NRIQA/
 score_and_sort/
+.vscode/
+.dist/
